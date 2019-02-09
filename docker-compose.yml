@@ -2,7 +2,7 @@ version: '3'
 
 services:
   nginx-proxy:
-    image: jwilder/nginx-proxy
+    image: jwilder/nginx-proxy:latest
     restart: always
     ports:
       - "80:80"
@@ -30,7 +30,7 @@ services:
           - node.role == manager
 
   65031141_ynu_gear:
-    image: 65031141/65031141_ynu_gear
+    image: 65031141/65031141_ynu_gear:latest
     restart: always
     volumes:
       - 65031141_volume:/root:rw
