@@ -43,10 +43,8 @@ services:
           - node.role == manager
     
   jump_ehall:
-    image: nginx:latest
+    image: 65031141/jump_ehall:latest
     restart: always
-    volumes:
-      - /opt/jump.ehall.ynu.edu.cn/html:/usr/share/nginx/html:ro
     environment:
       - VIRTUAL_HOST=jump.ehall.ynu.edu.cn
     deploy:
