@@ -10,25 +10,24 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-    deploy:
-      placement:
-        constraints:
-          - node.role == manager
+  #  deploy:
+  #    placement:
+  #      constraints:
+  #        - node.role == manager
 
   65031141_ynu_nginx:
     image: nginx:latest
     restart: always
     volumes:
-#      - /opt/65031141.ynu.edu.cn/html:/usr/share/nginx/html:ro
       - 65031141_volume:/usr/share/nginx:rw
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
       - VIRTUAL_HOST=65031141.ynu.edu.cn
-    deploy:
-      placement:
-        constraints:
-          - node.role == manager
+  #  deploy:
+  #    placement:
+  #      constraints:
+  #        - node.role == manager
 
   65031141_ynu_gear:
     image: 65031141/65031141_ynu_gear
@@ -38,10 +37,10 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     working_dir: /root
-    deploy:
-      placement:
-        constraints:
-          - node.role == manager
+ #   deploy:
+ #     placement:
+ #       constraints:
+ #         - node.role == manager
     
   jump_ehall:
     image: nginx:latest
@@ -50,10 +49,10 @@ services:
       - /opt/jump.ehall.ynu.edu.cn/html:/usr/share/nginx/html:ro
     environment:
       - VIRTUAL_HOST=jump.ehall.ynu.edu.cn
-    deploy:
-      placement:
-        constraints:
-          - node.role == manager
+ #   deploy:
+ #     placement:
+ #       constraints:
+ #         - node.role == manager
 
 volumes:
   65031141_volume:
