@@ -1,3 +1,8 @@
+# 这个版本所用的nginx-proxy是docker级别的，不是orchestra级别的
+# 导致所有的容器必须在同一台Host上才可以正常运行
+# 并且 nginx-proxy 必须运行在 manager 节点上网络才能正确映射
+# 这个版本并不好，接下来我要研究 Haproxy，看看能不能有什么更好的方式，目前暂时用这个版本
+
 version: '3'
 
 services:
