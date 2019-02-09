@@ -19,7 +19,7 @@ services:
     image: nginx:latest
     restart: always
     volumes:
-      - 65031141_volume:/usr/share/nginx:rw
+      - 65031141_volume:/usr/share/nginx:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
