@@ -3,7 +3,7 @@
 version: '3'
 
 services:
-
+  # 65031141.ynu.edu.cn
   65031141_ynu_nginx:
     image: nginx:latest
     restart: always
@@ -30,27 +30,24 @@ services:
       - /etc/localtime:/etc/localtime:ro
     networks:
       - portainer_agent_network
-    working_dir: /root
     deploy:
       placement:
         constraints:
           - node.role == manager
-    
+
+
+  # jump.ehall.ynu.edu.cn
   jump_ehall:
     image: 65031141/jump_ehall:latest
     restart: always
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     labels:
       - traefik.frontend.rule=Host:jump.ehall.ynu.edu.cn
       - label traefik.port=80
     networks:
       - portainer_agent_network
-    deploy:
-      placement:
-        constraints:
-          - node.role == manager
 
 volumes:
   65031141_volume:
-
-networks: 
-  swarm-overlay:
