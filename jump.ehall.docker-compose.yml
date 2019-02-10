@@ -13,7 +13,7 @@ services:
       labels:
         - traefik.frontend.rule=Host:jump.ehall.ynu.edu.cn
         - traefik.port=80
-	- traefik.frontend.auth.basic=thiswind:$apr1$dmduEA3i$OEwOnQTp/9UaWJEBODjo8/
+#	- traefik.frontend.auth.basic=thiswind:$apr1$dmduEA3i$OEwOnQTp/9UaWJEBODjo8/
     networks:
       - swarm_overlay
 
