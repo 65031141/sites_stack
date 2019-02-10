@@ -15,7 +15,7 @@ services:
       - traefik.frontend.rule=Host:65031141.ynu.edu.cn
       - label traefik.port=80
     networks:
-      - portainer_agent_network
+      - swarm_overlay
     deploy:
       placement:
         constraints:
@@ -29,7 +29,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     networks:
-      - portainer_agent_network
+      - swarm_overlay
     deploy:
       placement:
         constraints:
@@ -47,7 +47,12 @@ services:
       - traefik.frontend.rule=Host:jump.ehall.ynu.edu.cn
       - label traefik.port=80
     networks:
-      - portainer_agent_network
+      - swarm_overlay
 
 volumes:
   65031141_volume:
+
+networks: 
+  swarm_overlay:
+    external:
+      name: portainer_agent_network
