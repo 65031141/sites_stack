@@ -14,9 +14,9 @@ services:
       labels:
         - traefik.frontend.rule=Host:65031141.ynu.edu.cn
         - traefik.port=80
-#      placement:
-#        constraints:
-#          - node.role == manager
+      placement:
+        constraints:
+          - node.role == manager
     networks:
       - swarm_overlay
       
@@ -30,10 +30,10 @@ services:
     working_dir: /root
     networks:
       - swarm_overlay
-#    deploy:
-#      placement:
-#        constraints:
-#          - node.role == manager
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
 
 volumes:
   65031141_volume:
