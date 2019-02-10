@@ -14,12 +14,12 @@ services:
       labels:
         - traefik.frontend.rule=Host:65031141.ynu.edu.cn
         - traefik.port=80
-    networks:
-      - swarm_overlay
-    deploy:
       placement:
         constraints:
           - node.role == manager
+    networks:
+      - swarm_overlay
+      
 
   65031141_ynu_gear:
     image: 65031141/65031141_ynu_gear:latest
