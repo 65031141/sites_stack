@@ -1,0 +1,22 @@
+# 采用traefik来做负载均衡，进而实现跨主机
+
+version: '3'
+
+services:
+  # jump.ehall.ynu.edu.cn
+  jump_ehall:
+    image: 65031141/jump_ehall:latest
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    deploy:
+      labels:
+        - traefik.frontend.rule=Host:jump.ehall.ynu.edu.cn
+        - traefik.port=80
+    networks:
+      - swarm_overlay
+
+networks: 
+  swarm_overlay:
+    external:
+      name: portainer_agent_network

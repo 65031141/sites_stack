@@ -1,0 +1,43 @@
+# 采用traefik来做负载均衡，进而实现跨主机
+
+version: '3'
+
+services:
+  # 65031141.ynu.edu.cn
+  65031141_ynu_nginx:
+    image: nginx:latest
+    volumes:
+      - 65031141_volume:/usr/share/nginx:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    deploy:
+      labels:
+        - traefik.frontend.rule=Host:65031141.ynu.edu.cn
+        - traefik.port=80
+    networks:
+      - swarm_overlay
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+
+  65031141_ynu_gear:
+    image: 65031141/65031141_ynu_gear:latest
+    volumes:
+      - 65031141_volume:/root:rw
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - swarm_overlay
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+
+volumes:
+  65031141_volume:
+
+networks: 
+  swarm_overlay:
+    external:
+      name: portainer_agent_network
