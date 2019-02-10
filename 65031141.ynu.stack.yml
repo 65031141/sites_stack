@@ -27,6 +27,7 @@ services:
       - 65031141_volume:/root:rw
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
+    working_dir: /root
     networks:
       - swarm_overlay
     deploy:
